@@ -44,15 +44,13 @@ if __name__ == '__main__':
     data_dir = sys.argv[1]
     anno_dir = sys.argv[2]
     labels_dir = 'labels'
-    if not os.path.exists(labels_dir):
-        os.mkdir(labels_dir)
     with open('train.txt', 'w') as train:
         annos = sorted(glob.glob(os.path.join(anno_dir, '*.csv')))
         #print(annos, anno_dir)
         for anno in tqdm(annos):
             img = os.path.splitext(os.path.basename(anno))[0]
             img_name = os.path.join(data_dir, img)
-            img_id = os.path.join(labels_dir, os.path.splitext(img)[0]) + '.txt'
+            img_id = os.path.join(data_dir, os.path.splitext(img)[0]) + '.txt'
             #print(img, img_name, img_id)
             with open(img_id, 'w') as txt:
                 with open(anno, 'r') as f:
