@@ -21,8 +21,8 @@ def get_size(img_name):
 
 def convert(img_name, box):
     _h, _w = get_size(img_name)
-    dw = 1./(_h)
-    dh = 1./(_w)
+    dw = 1./(_w)
+    dh = 1./(_h)
     x = (box[0] + box[1])/2.0 - 1
     y = (box[2] + box[3])/2.0 - 1
     w = box[1] - box[0]
@@ -57,7 +57,7 @@ if __name__ == '__main__':
                 reader = csv.reader(f)
                 for row in reader:
                     cls_id = classes.index(row[0])
-                    b = (float(row[1]), float(row[2]), float(row[3]), float(row[4]))
+                    b = (float(row[1]), float(row[3]), float(row[2]), float(row[4]))
                     bb = convert(img_name, b)
                     #print('.', end='', flush=True)
                     has_anno = True
