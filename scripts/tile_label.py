@@ -52,17 +52,20 @@ if __name__ == '__main__':
             img_name = os.path.join(data_dir, img)
             img_id = os.path.join(data_dir, os.path.splitext(img)[0]) + '.txt'
             #print(img, img_name, img_id)
+            # debug
+            #if not img.startswith('DSC07267.JPG'):
+            #    continue
             has_anno = False
-            with open(anno, 'r') as f:
-                reader = csv.reader(f)
-                for row in reader:
-                    cls_id = classes.index(row[0])
-                    b = (float(row[1]), float(row[3]), float(row[2]), float(row[4]))
-                    bb = convert(img_name, b)
-                    #print('.', end='', flush=True)
-                    has_anno = True
-                    with open(img_id, 'w') as txt:
-                      txt.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
+            with open(img_id, 'w') as txt:
+                with open(anno, 'r') as f:
+                    reader = csv.reader(f)
+                    for row in reader:
+                        cls_id = classes.index(row[0])
+                        b = (float(row[1]), float(row[3]), float(row[2]), float(row[4]))
+                        bb = convert(img_name, b)
+                        #print('.', end='', flush=True)
+                        has_anno = True
+                        txt.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
             if has_anno:
                 train.write('{}\n'.format(os.path.join(cwd, img_name)))
 
