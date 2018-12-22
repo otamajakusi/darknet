@@ -5,8 +5,7 @@ import glob
 import csv
 import cv2
 from tqdm import tqdm
-
-sets=[('2012', 'train'), ('2012', 'val'), ('2007', 'train'), ('2007', 'val'), ('2007', 'test')]
+import joblib
 
 classes = ['bk',
            'm1','m2','m3','m4','m5','m6','m7','m8','m9',
@@ -34,16 +33,18 @@ def convert(img_name, box):
     return (x,y,w,h)
 
 def usage(cmd):
-    print("Usage:", cmd, "data_dir anno_dir")
+    print("Usage:", cmd, "data_dir anno_dir [single]")
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
+    if len(sys.argv) < 3:
         usage(sys.argv[0])
         sys.exit(1)
     cwd = os.getcwd()
     data_dir = sys.argv[1]
     anno_dir = sys.argv[2]
+    single = True if len(sys.argv) == 4 else False
     labels_dir = 'labels'
+    print('data_dir={}, anno_dir={}, single={}'.format(data_dir, anno_dir, single))
     with open('train.txt', 'w') as train:
         annos = sorted(glob.glob(os.path.join(anno_dir, '*.csv')))
         #print(annos, anno_dir)
