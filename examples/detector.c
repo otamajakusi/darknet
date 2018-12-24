@@ -109,7 +109,7 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
            }
          */
 
-        printf("Loaded: %lf seconds\n", what_time_is_it_now()-time);
+        //printf("Loaded: %lf seconds\n", what_time_is_it_now()-time);
 
         time=what_time_is_it_now();
         float loss = 0;

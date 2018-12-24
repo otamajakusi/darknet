@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 with open(anno, 'r') as f:
                     reader = csv.reader(f)
                     for row in reader:
-                        cls_id = classes.index(row[0])
+                        cls_id = 0 if single else classes.index(row[0])
                         b = (float(row[1]), float(row[3]), float(row[2]), float(row[4]))
                         bb = convert(img_name, b)
                         #print('.', end='', flush=True)
