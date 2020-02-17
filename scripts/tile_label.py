@@ -56,6 +56,8 @@ if __name__ == '__main__':
             # debug
             #if not img.startswith('DSC07267.JPG'):
             #    continue
+            if not os.path.exists(img_name):
+              continue
             has_anno = False
             with open(img_id, 'w') as txt:
                 with open(anno, 'r') as f:
