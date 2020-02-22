@@ -6,6 +6,7 @@ import csv
 import cv2
 from tqdm import tqdm
 import joblib
+import random
 
 classes = ['bk',
            'm1','m2','m3','m4','m5','m6','m7','m8','m9',
@@ -45,7 +46,7 @@ if __name__ == '__main__':
     single = True if len(sys.argv) == 4 else False
     labels_dir = 'labels'
     print('data_dir={}, anno_dir={}, single={}'.format(data_dir, anno_dir, single))
-    with open('train.txt', 'w') as train:
+    with open('train.txt', 'w') as train, open('valid.txt', 'w') as valid:
         annos = sorted(glob.glob(os.path.join(anno_dir, '*.csv')))
         #print(annos, anno_dir)
         for anno in tqdm(annos):
@@ -70,5 +71,8 @@ if __name__ == '__main__':
                         has_anno = True
                         txt.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
             if has_anno:
-                train.write('{}\n'.format(os.path.join(cwd, img_name)))
+                if random.randint(0, 4) == 0:
+                    valid.write('{}\n'.format(os.path.join(cwd, img_name)))
+                else:
+                    train.write('{}\n'.format(os.path.join(cwd, img_name)))
 
