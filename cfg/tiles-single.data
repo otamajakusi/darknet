@@ -1,6 +1,6 @@
 classes= 1
-train  = images/train.txt
-valid  = images/valid.txt
-names = data/tiles-single.names
+train  = train.txt
+valid = valid.txt
+names = tiles-single.names
 backup = backup
 
