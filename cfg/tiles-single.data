@@ -2,5 +2,5 @@ classes= 1
 train  = train.txt
 valid  = valid.txt
 names = data/tiles-single.names
-backup = /content/drive/My\ Drive/ml/yolov3-backup
+backup = backup
 
