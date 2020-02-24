@@ -1,6 +1,6 @@
 classes= 35
 train  = train.txt
-#valid  = 
+valid = valid.txt
 names = data/tiles.names
 backup = backup
 

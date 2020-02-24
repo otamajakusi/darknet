@@ -1,6 +1,6 @@
 classes= 1
 train  = train.txt
 valid = valid.txt
-names = tiles-single.names
+names = data/tiles-single.names
 backup = backup
 
