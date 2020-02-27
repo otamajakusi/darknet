@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# git clone https://github.com/otamajakusi/darknet.git
+# cd darknet
+
 # before running this script, google drive should be mounted.
 # tile score w/ darknet
 googledrive="/content/drive/My Drive"
@@ -9,8 +12,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-git clone https://github.com/otamajakusi/darknet.git
-cd darknet
 make
 
 # tar -C directory --strip-components 1 has a problem for darknet??
