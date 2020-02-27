@@ -6,7 +6,7 @@
 # before running this script, google drive should be mounted.
 # tile score w/ darknet
 googledrive="/content/drive/My\ Drive"
-stat ${googledrive}
+stat "${googledrive}"
 if [ $? -ne 0 ]; then
     echo "google drive should be mounted"
     exit 1
