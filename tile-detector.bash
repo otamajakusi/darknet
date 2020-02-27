@@ -28,16 +28,18 @@ if [ "/content/drive/My Drive/ml/train.txt" -a "/content/drive/My Drive/ml/valid
     cp "/content/drive/My Drive/ml/{train,valid}.txt" .
 else
     python3 scripts/tile_label.py 2018-06-23 anno
+    cp {train,valid}.txt "/content/drive/My Drive/ml/"
 fi
 
 weight="darknet53.conv.74"
-if [ -d "/content/drive/My Drive/ml/yolo3-backup/yolov3-tile.backup" ]; then
+if [ -f "/content/drive/My Drive/ml/yolo3-backup/yolov3-tile.backup" ]; then
     weight=backup/yolov3-tile.backup
 elif [ -f "/content/drive/My Drive/ml/darknet53.conv.74" ]; then
     cp "/content/drive/My Drive/ml/darknet53.conv.74" .
 else
     wget https://pjreddie.com/media/files/darknet53.conv.74
 fi
+
 rm -rf backup
 ln -s "/content/drive/My Drive/ml/yolo3-backup" backup
 
