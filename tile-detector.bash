@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 # git clone https://github.com/otamajakusi/darknet.git
 # cd darknet
 
