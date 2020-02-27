@@ -24,7 +24,7 @@ mv 2018-09-15/* 2018-09-29/* 2018-12-20/* 2018-06-23
 mkdir anno
 tar zxf /content/drive/My\ Drive/public/tile-labels.tgz -C anno
 
-if [ "/content/drive/My Drive/ml/train.txt" -a "/content/drive/My Drive/ml/valid.txt" ]; then
+if [ -f "/content/drive/My Drive/ml/train.txt" -a -f "/content/drive/My Drive/ml/valid.txt" ]; then
     cp "/content/drive/My Drive/ml/{train,valid}.txt" .
 else
     python3 scripts/tile_label.py 2018-06-23 anno
