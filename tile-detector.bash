@@ -26,15 +26,15 @@ mv 2018-09-15/* 2018-09-29/* 2018-12-20/* 2018-06-23
 mkdir -p anno
 tar zxf /content/drive/My\ Drive/public/tile-labels.tgz -C anno
 
-if [ -f "/content/drive/My Drive/ml/yolo3-backup/train.txt" -a -f "/content/drive/My Drive/ml/yolo3-backup/valid.txt" ]; then
-    cp "/content/drive/My Drive/ml/yolo3-backup/{train,valid}.txt" .
+if [ -f "/content/drive/My Drive/ml/yolov3-backup/train.txt" -a -f "/content/drive/My Drive/ml/yolov3-backup/valid.txt" ]; then
+    cp "/content/drive/My Drive/ml/yolov3-backup/{train,valid}.txt" .
 else
     python3 scripts/tile_label.py 2018-06-23 anno
-    cp {train,valid}.txt "/content/drive/My Drive/ml/yolo3-backup/"
+    cp {train,valid}.txt "/content/drive/My Drive/ml/yolov3-backup/"
 fi
 
 weight="darknet53.conv.74"
-if [ -f "/content/drive/My Drive/ml/yolo3-backup/yolov3-tile.backup" ]; then
+if [ -f "/content/drive/My Drive/ml/yolov3-backup/yolov3-tile.backup" ]; then
     weight=backup/yolov3-tile.backup
 elif [ -f "/content/drive/My Drive/ml/darknet53.conv.74" ]; then
     cp "/content/drive/My Drive/ml/darknet53.conv.74" .
