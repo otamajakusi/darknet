@@ -26,11 +26,11 @@ mv 2018-09-15/* 2018-09-29/* 2018-12-20/* 2018-06-23
 mkdir -p anno
 tar zxf /content/drive/My\ Drive/public/tile-labels.tgz -C anno
 
-if [ -f "/content/drive/My Drive/ml/yolov3-backup/train.txt" -a -f "/content/drive/My Drive/ml/yolov3-backup/valid.txt" ]; then
-    cp "/content/drive/My Drive/ml/yolov3-backup/{train,valid}.txt" .
+if [ -f "/content/drive/My Drive/ml/yolov3-backup/anno.tgz" ]; then
+    tar zxf "/content/drive/My Drive/ml/yolov3-backup/anno.tgz"
 else
     python3 scripts/tile_label.py 2018-06-23 anno
-    cp {train,valid}.txt "/content/drive/My Drive/ml/yolov3-backup/"
+    tar zcf "/content/drive/My Drive/ml/yolov3-backup/anno.tgz" {train,valid}.txt 2018-06-23/*.txt
 fi
 
 weight="darknet53.conv.74"
@@ -42,7 +42,7 @@ else
     wget https://pjreddie.com/media/files/darknet53.conv.74
 fi
 
-rm -rf backup
+rm -r backup
 ln -s "/content/drive/My Drive/ml/yolov3-backup" backup
 
 ./darknet detector train cfg/tiles.data cfg/yolov3-tile.cfg ${weight}
